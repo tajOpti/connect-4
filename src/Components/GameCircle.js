@@ -5,9 +5,9 @@ const onClick = (id) => {
     alert('on click : ' + id);
 }
 
-const GameCircle = ({ id, children }) => {
+const GameCircle = ({ id, color, children }) => {
     return (
-        <div onClick={() => { onClick(id) }}>
+        <div style={{ backgroundColor: color }} onClick={() => { onClick(id) }}>
             {children}
         </div>
     )
