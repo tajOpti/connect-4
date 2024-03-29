@@ -16,8 +16,15 @@ const GameBoard = () => {
 
     const cicleClicked = (id) => {
         console.log(`circle clicked ${id}`);
-        gameBoard[id] = currentPlayer;
-        setGameBoard(gameBoard);
+
+
+        // this is done to prevent mutation of the original array
+        // just destructure it to make a copy of the tracked array
+        // then change the array element to the player value
+        // change state by passing the copied array and passing it in
+        const board = [...gameBoard]
+        board[id] = currentPlayer;
+        setGameBoard(board);
 
         setCurrentPlayer(currentPlayer === PLAYER_1 ? PLAYER_2 : PLAYER_1);
 
