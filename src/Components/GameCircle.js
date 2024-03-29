@@ -9,7 +9,7 @@ const onClick = (id) => {
 const GameCircle = ({ id, children }) => {
 
     return (
-        <div className={`gameCircle ${id % 2 === 0 ? 'even' : 'odd'}`} onClick={() => { onClick(id) }}>
+        <div className={`gameCircle ${id % 2 === 0 ? 'odd' : 'even'}`} onClick={() => { onClick(id) }}>
             {children}
         </div >
     )
