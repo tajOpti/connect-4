@@ -6,6 +6,7 @@ import GameCircle from "./GameCircle";
 const NO_PLAYER = 0;
 const PLAYER_1 = 1;
 const PLAYER_2 = 2;
+const NO_CIRCLES = 16;
 
 const GameBoard = () => {
 
@@ -14,9 +15,18 @@ const GameBoard = () => {
 
     console.log(gameBoard);
 
+
+    const initBoard = () => {
+        const circles = [];
+
+        for (let i = 0; i < NO_CIRCLES; i++) {
+            circles.push(renderCircle(i));
+        }
+        return circles;
+    }
+
     const cicleClicked = (id) => {
         console.log(`circle clicked ${id}`);
-
 
         // this is done to prevent mutation of the original array
         // just destructure it to make a copy of the tracked array
@@ -25,10 +35,18 @@ const GameBoard = () => {
         board[id] = currentPlayer;
         setGameBoard(board);
 
+        setGameBoard(prevCircles => {
+            return prevCircles.map((circle, pos) => {
+                if (pos === id) {
+                    return currentPlayer
+                }
+                return circle;
+            })
+        })
         // then change the array element to the player value
         // change state by passing the copied array and passing it in
         setCurrentPlayer(currentPlayer === PLAYER_1 ? PLAYER_2 : PLAYER_1);
-
+        console.log(currentPlayer);
         console.log(gameBoard);
     }
 
@@ -36,17 +54,11 @@ const GameBoard = () => {
         return <GameCircle id={id} className={`player_${gameBoard[id]}`} onCircleClicked={cicleClicked}></GameCircle>
     }
 
+
+
     return (
         <div className="gameBoard">
-            {renderCircle(0)}
-            {renderCircle(1)}
-            {renderCircle(2)}
-            {renderCircle(3)}
-            {renderCircle(4)}
-            {renderCircle(5)}
-            {renderCircle(6)}
-            {renderCircle(7)}
-            {renderCircle(8)}
+            {initBoard()}
         </div>
     )
 }
