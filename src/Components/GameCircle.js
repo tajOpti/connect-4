@@ -5,10 +5,10 @@ const onClick = () => {
     alert('on click');
 }
 
-const GameCircle = () => {
+const GameCircle = ({ props }) => {
     return (
         <div onClick={onClick}>
-            GameCircle
+            GameCircle - id {props.id}
         </div>
     )
 }
