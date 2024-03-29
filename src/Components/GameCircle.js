@@ -8,7 +8,7 @@ const onClick = () => {
 const GameCircle = ({ id, children }) => {
     return (
         <div onClick={onClick}>
-            GameCircle - id {id} {children}
+            {children}
         </div>
     )
 }

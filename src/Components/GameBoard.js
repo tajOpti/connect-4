@@ -5,7 +5,7 @@ const GameBoard = () => {
     return (
         <div>
             <GameCircle id={1}>
-                <div>Red</div>
+                Red
             </GameCircle>
             <GameCircle id={2}>
                 Blue
