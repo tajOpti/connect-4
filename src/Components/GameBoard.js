@@ -31,15 +31,9 @@ const GameBoard = () => {
         // this is done to prevent mutation of the original array
         // just destructure it to make a copy of the tracked array
 
-        const board = [...gameBoard]
-        board[id] = currentPlayer;
-        setGameBoard(board);
-
         setGameBoard(prevCircles => {
             return prevCircles.map((circle, pos) => {
-                if (pos === id) {
-                    return currentPlayer
-                }
+                if (pos === id) return currentPlayer
                 return circle;
             })
         })
