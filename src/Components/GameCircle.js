@@ -1,13 +1,13 @@
 import React from "react";
 
 
-const onClick = () => {
-    alert('on click');
+const onClick = (id) => {
+    alert('on click : ' + id);
 }
 
 const GameCircle = ({ id, children }) => {
     return (
-        <div onClick={onClick}>
+        <div onClick={() => { onClick(id) }}>
             {children}
         </div>
     )
