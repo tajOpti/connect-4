@@ -20,12 +20,13 @@ const GameBoard = () => {
 
         // this is done to prevent mutation of the original array
         // just destructure it to make a copy of the tracked array
-        // then change the array element to the player value
-        // change state by passing the copied array and passing it in
+
         const board = [...gameBoard]
         board[id] = currentPlayer;
         setGameBoard(board);
 
+        // then change the array element to the player value
+        // change state by passing the copied array and passing it in
         setCurrentPlayer(currentPlayer === PLAYER_1 ? PLAYER_2 : PLAYER_1);
 
         console.log(gameBoard);
