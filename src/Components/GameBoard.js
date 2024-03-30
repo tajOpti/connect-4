@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import '../Game.css';
 import GameCircle from "./GameCircle";
-
+import Header from "./Header";
+import Footer from "./Footer";
 
 const NO_PLAYER = 0;
 const PLAYER_1 = 1;
@@ -9,7 +10,7 @@ const PLAYER_2 = 2;
 const NO_CIRCLES = 16;
 
 const GameBoard = () => {
-
+    debugger;
     const [gameBoard, setGameBoard] = useState(Array(16).fill(NO_PLAYER));
     const [currentPlayer, setCurrentPlayer] = useState(PLAYER_1);
 
@@ -51,9 +52,13 @@ const GameBoard = () => {
 
 
     return (
-        <div className="gameBoard">
-            {initBoard()}
-        </div>
+        <>
+            <Header />
+            <div className="gameBoard">
+                {initBoard()}
+            </div>
+            <Footer />
+        </>
     )
 }
 
