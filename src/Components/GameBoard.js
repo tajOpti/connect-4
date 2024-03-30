@@ -25,6 +25,7 @@ const GameBoard = () => {
         console.log('initialize game');
         setGameBoard(Array(16).fill(NO_PLAYER));
         setCurrentPlayer(PLAYER_1);
+        setGameState(GAME_STATE_PLAYING);
     }
 
     const initBoard = () => {
