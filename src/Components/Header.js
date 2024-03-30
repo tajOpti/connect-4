@@ -1,10 +1,10 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({ player }) => {
     return (
         <div className="panel header">
             <div className="header-text">
-                Player 1 turn
+                Player {player} turn
             </div>
         </div>
     )

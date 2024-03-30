@@ -3,6 +3,7 @@ import '../Game.css';
 import GameCircle from "./GameCircle";
 import Header from "./Header";
 import Footer from "./Footer";
+import isWinner from '../Helper';
 
 const NO_PLAYER = 0;
 const PLAYER_1 = 1;
@@ -10,7 +11,6 @@ const PLAYER_2 = 2;
 const NO_CIRCLES = 16;
 
 const GameBoard = () => {
-    debugger;
     const [gameBoard, setGameBoard] = useState(Array(16).fill(NO_PLAYER));
     const [currentPlayer, setCurrentPlayer] = useState(PLAYER_1);
 
@@ -29,9 +29,12 @@ const GameBoard = () => {
     const cicleClicked = (id) => {
         console.log(`circle clicked ${id}`);
 
+
+        if (isWinner(gameBoard, id, currentPlayer)) {
+            alert('winner ' + currentPlayer);
+        }
         // this is done to prevent mutation of the original array
         // just destructure it to make a copy of the tracked array
-
         setGameBoard(prevCircles => {
             return prevCircles.map((circle, pos) => {
                 if (pos === id) return currentPlayer
@@ -53,7 +56,7 @@ const GameBoard = () => {
 
     return (
         <>
-            <Header />
+            <Header player={currentPlayer} />
             <div className="gameBoard">
                 {initBoard()}
             </div>
