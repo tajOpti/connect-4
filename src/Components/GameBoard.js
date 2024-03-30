@@ -3,7 +3,7 @@ import '../Game.css';
 import GameCircle from "./GameCircle";
 import Header from "./Header";
 import Footer from "./Footer";
-import isWinner from '../Helper';
+import { isWinner, isDraw } from '../Helper';
 import { NO_PLAYER, PLAYER_1, PLAYER_2, NO_CIRCLES, GAME_STATE_PLAYING, GAME_STATE_IDLE, GAME_STATE_WIN, GAME_STATE_DRAW } from '../constants';
 
 
@@ -38,6 +38,10 @@ const GameBoard = () => {
         if (isWinner(gameBoard, id, currentPlayer)) {
             setGameState(GAME_STATE_WIN);
             setWinPlayer(currentPlayer);
+        }
+        if (isDraw(gameBoard, id, currentPlayer)) {
+            setGameState(GAME_STATE_DRAW);
+            setWinPlayer(NO_PLAYER);
         }
         // this is done to prevent mutation of the original array
         // just destructure it to make a copy of the tracked array
